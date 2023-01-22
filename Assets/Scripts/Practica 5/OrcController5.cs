@@ -9,14 +9,14 @@ public class OrcController5 : MonoBehaviour
     public GameObject target;
 
     private float _speed;
-    private Rigidbody rb;
+    private Rigidbody _rb;
 
     private void Awake()
     {
         _speed = speedOrc;
         transform.LookAt(target.transform);
-        rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        _rb = GetComponent<Rigidbody>();
+        _rb.constraints = RigidbodyConstraints.FreezeRotationY;
     }
 
     private void Update()

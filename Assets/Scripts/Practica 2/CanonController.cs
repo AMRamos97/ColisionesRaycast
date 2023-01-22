@@ -6,35 +6,32 @@ using UnityEngine;
 
 public class CanonController : MonoBehaviour
 {
-    private bool clickleft;
-    private float timetoShot;
-    private List<GameObject> ballList;
-
-    [Header("Movimiento")] 
     public float speedRot;
-
-    private float _horizontal;
-    [Header("Disparar Cañonazos")] 
     public float timeBetweenShots;
     public GameObject firePoint;
-    [Header("Pool Balas")]
     public GameObject balaPrefab;
     public int numBalasMax;
     
     
+    private float _horizontal;
+    private bool _clickleft;
+    private float _timetoShot;
+    private List<GameObject> _ballList;
     
-    //la speed mEJOR EN LA BOLA, ANOSER Q DISPARE BOLAS CON DIFERENTES VELOCIDADES.
+    
+    
+    //la speed mejor en la bola, excepto si dispara bolas con diferentes velocidades
     
     void Awake()
     {
-        timetoShot = timeBetweenShots;
-        ballList = new List<GameObject>();  // instancio una lista de gameObjects(bolas)
+        _timetoShot = timeBetweenShots;
+        _ballList = new List<GameObject>();  // instancio una lista de gameObjects(bolas)
         GameObject ball;  // Creo un gameObject (bola) para instanciar copias del prefab  
         for (int i = 0; i < numBalasMax; i++) // repito tantas veces como bolas quiera
         {
             ball = Instantiate(balaPrefab); // instancio una bola nuevo
             ball.SetActive(false); // lo desactivo en la escena
-            ballList.Add(ball); // lo añado a la lista de bolas.
+            _ballList.Add(ball); // lo añado a la lista de bolas.
         }
     }
 
@@ -47,38 +44,38 @@ public class CanonController : MonoBehaviour
         
     }
 
-    private void getInputs()
+    private void getInputs() // obtiene los inputs 
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetMouseButtonDown(0))
-            clickleft = true;
+            _clickleft = true;
         if (Input.GetMouseButtonUp(0)) {
-            clickleft = false;
-            timetoShot = timeBetweenShots;
+            _clickleft = false;
+            _timetoShot = timeBetweenShots;
         }
     }
 
-    private void rotateCanon()
+    private void rotateCanon() // rota el cañon
     {
         transform.Rotate(100 * speedRot * Time.deltaTime * _horizontal * Vector3.up);
     }
 
-    private bool canShot()
+    private bool canShot() // Hace de timer y comprueba si puede disparar
     {
-        if (clickleft && timetoShot <= 0)
+        if (_clickleft && _timetoShot <= 0)
         {
-            timetoShot = timeBetweenShots;
+            _timetoShot = timeBetweenShots;
             return true;
         }
         else
         {
-            timetoShot -= Time.deltaTime;
+            _timetoShot -= Time.deltaTime;
             return false;
         }
             
     }
 
-    void DispararCañon()
+    void DispararCañon() // Dispara el cañon
     {
         if (canShot())
         {
@@ -93,12 +90,12 @@ public class CanonController : MonoBehaviour
         
     }
 
-    private GameObject getFreeBall()
+    private GameObject getFreeBall() // obtiene una bola en false
     {
-        return ballList.Find(ballList => ballList.activeInHierarchy == false);
+        return _ballList.Find(ballList => ballList.activeInHierarchy == false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // checkea si la bola colisiona con el enemy
     {
         if(other.CompareTag("Enemy"))
             gameObject.SetActive(false);

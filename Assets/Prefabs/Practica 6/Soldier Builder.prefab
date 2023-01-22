@@ -396,13 +396,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab3cd7537b8645479b0c0880a53019c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  minTimetoRotation: 2
-  maxTimetoRotation: 5
-  minTimetoBuild: 3
-  maxTimetoBuild: 5
+  speed: 4
+  minTimetoRotation: 1
+  maxTimetoRotation: 2
+  minTimetoBuild: 4
+  maxTimetoBuild: 6
   bsPrefab: {fileID: 1713667378977230, guid: 28d089832da2fdf4a86373cf571fa1f4, type: 3}
-  RadiusColisionBSorSoldier: 3
+  radiusColisionBSorSoldier: 3
 --- !u!1 &1461664368709332
 GameObject:
   m_ObjectHideFlags: 0

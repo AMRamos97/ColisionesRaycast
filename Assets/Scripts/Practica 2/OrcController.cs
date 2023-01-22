@@ -7,13 +7,13 @@ public class OrcController : MonoBehaviour
     public float speedOrc;
     public GameObject target;
     
-    private GameObject canon;
+    private GameObject _canon;
     
     // Start is called before the first frame update
-    void OnEnable()
+    void OnEnable() // le fija objetivo al orco
     {
-        canon = target;
-        transform.LookAt(canon.transform);
+        _canon = target;
+        transform.LookAt(_canon.transform);
     }
 
     // Update is called once per frame

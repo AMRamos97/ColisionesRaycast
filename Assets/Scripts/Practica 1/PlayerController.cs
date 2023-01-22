@@ -7,11 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speedMove;
     public float speedRot;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

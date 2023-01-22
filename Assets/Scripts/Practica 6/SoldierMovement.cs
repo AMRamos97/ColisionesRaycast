@@ -13,10 +13,10 @@ public class SoldierMovement : MonoBehaviour
     public float minTimetoBuild;
     public float maxTimetoBuild;
     public GameObject bsPrefab;
-    public float RadiusColisionBSorSoldier;
+    public float radiusColisionBSorSoldier;
     
-    private Rigidbody rb;
-    private float rotation; // rotacion en grados
+    private Rigidbody _rb;
+    private float _rotation; // rotacion en grados
     private float timeRotation; // constante de tiempo para rotar
     private float _timeToRotation;
     private float _timeToBuild;
@@ -26,9 +26,9 @@ public class SoldierMovement : MonoBehaviour
     {
         timeRotation = Random.Range(minTimetoRotation, maxTimetoRotation);
         _timeToRotation = timeRotation;
-        rb = GetComponent<Rigidbody>();
-        rotation = Random.Range(0, 360);
-        transform.Rotate(Vector3.up * rotation);
+        _rb = GetComponent<Rigidbody>();
+        _rotation = Random.Range(0, 360);
+        transform.Rotate(Vector3.up * _rotation);
         _timeToBuild = Random.Range(minTimetoBuild,maxTimetoBuild);
     }
 
@@ -62,13 +62,13 @@ public class SoldierMovement : MonoBehaviour
 
     void MoveSoldier()
     {
-        rb.velocity = transform.forward * speed;
+        _rb.velocity = transform.forward * speed;
     }
 
     void RotateSoldier()
     {
-        rotation = Random.Range(0, 360);
-        transform.Rotate(Vector3.up * rotation);
+        _rotation = Random.Range(0, 360);
+        transform.Rotate(Vector3.up * _rotation);
     }
     void SoldierBuild()
     {
@@ -81,7 +81,7 @@ public class SoldierMovement : MonoBehaviour
     bool checkBlackSmithSoldiersAround()
     {
         int numSoldiersCol = 0;
-        Collider[] col = Physics.OverlapSphere(transform.position, RadiusColisionBSorSoldier);
+        Collider[] col = Physics.OverlapSphere(transform.position, radiusColisionBSorSoldier);
         for (int i = 0; i < col.Length; i++)
         {
             if (col[i].gameObject.CompareTag("Blacksmith"))

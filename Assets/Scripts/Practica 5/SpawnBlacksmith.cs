@@ -13,7 +13,7 @@ public class SpawnBlacksmith : MonoBehaviour
     public int soldiersSpawnedPerClick;
     
     private List<GameObject> _soldierList;
-    private const float RadioMinSpawn = 3.0f;
+    private const float _RadioMinSpawn = 3.0f;
 
 
     // Start is called before the first frame update
@@ -39,14 +39,14 @@ public class SpawnBlacksmith : MonoBehaviour
     {
         for (int i = 1; i <= soldiersSpawnedPerClick; i++)
         {
-            GameObject soldier = getFreeSoldier();
+            GameObject soldier = GetFreeSoldier();
             if (soldier)
             {
                 Vector3 pos = Random.insideUnitSphere;
                 pos.y = 0;
-                pos = pos.normalized * Random.Range(RadioMinSpawn,radioMaxSpawn) ;
+                pos = pos.normalized * Random.Range(_RadioMinSpawn,radioMaxSpawn) ;
 
-                if (!soldierAround(pos))
+                if (!SoldierAround(pos))
                 {
                     soldier.transform.position = pos;
                     soldier.transform.LookAt(gameObject.transform);
@@ -63,12 +63,12 @@ public class SpawnBlacksmith : MonoBehaviour
     }
     
     
-    GameObject getFreeSoldier()
+    GameObject GetFreeSoldier()
     { 
         return _soldierList.Find(orc => orc.activeInHierarchy == false);
     }
 
-    bool soldierAround( Vector3 pos )
+    bool SoldierAround( Vector3 pos )
     {
         bool soldierAround = false;
 

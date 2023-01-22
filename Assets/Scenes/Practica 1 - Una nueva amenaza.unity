@@ -494,10 +494,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.46389246
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: -0.03610754}
 --- !u!114 &490147186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d719cc0881645924695e9139405b65cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkPlatf: 0
   distMin: 3
   distMax: 10
   numOrcosMax: 20
@@ -889,7 +888,7 @@ GameObject:
   - component: {fileID: 1166827732}
   m_Layer: 3
   m_Name: Summon Platform
-  m_TagString: Untagged
+  m_TagString: Summon Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1603,8 +1602,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.7369248
+  m_Center: {x: 0, y: 0, z: 0.013075173}
 --- !u!114 &2090050083
 MonoBehaviour:
   m_ObjectHideFlags: 0

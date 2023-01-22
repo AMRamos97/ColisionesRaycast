@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour
     public float speed;
     public float timeToHide;
 
-    private void OnDisable()
+    private void OnDisable() // resetea al timer de la bala al ocultarla
     {
         timeToHide = 2f;
     }
@@ -20,7 +20,7 @@ public class BallController : MonoBehaviour
         setFalse();
     }
 
-    private void setFalse()
+    private void setFalse() // Hace el conteo y oculta la bala.
     {
         if (timeToHide <= 0)
             gameObject.SetActive(false);

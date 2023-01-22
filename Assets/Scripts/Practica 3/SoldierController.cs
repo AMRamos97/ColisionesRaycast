@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoldierController : MonoBehaviour
-{
-    // Ray Properties
-    private Ray _ray; // rayo compuesto por origen y direccion
-    private RaycastHit _hitRayo; // informacion del golpe del rayo con un collider
+{   
     public float distanciaRayo; // distancia del rayo
-
-    //capas
     public LayerMask capaWall;
-    
     public Transform origenRayo; // origen desde donde lanzo el rayo
     public float speed;
+    
+    
+    private Ray _ray; // rayo compuesto por origen y direccion
+    private RaycastHit _hitRayo; // informacion del golpe del rayo con un collider
 
     
     void Start()
@@ -39,7 +37,7 @@ public class SoldierController : MonoBehaviour
         Debug.DrawRay(_ray.origin,_ray.direction * distanciaRayo, Color.red);
     }
 
-    public void setSpeed(float s)
+    public void setSpeed(float s) // setter speed
     {
         speed = speed * s;
     }

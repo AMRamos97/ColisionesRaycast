@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckControllerPlayerRaycast : MonoBehaviour
-{ /*RAYCAST*/
-    // Ray Properties
+{
+    public LayerMask capaPlatform; 
+    public LayerMask capaGround;
+    public Transform origenRayo; // origen desde donde lanzo el rayo
+
+
     private Ray _ray; // rayo compuesto por origen y direccion
     private RaycastHit _hitRayo; // informacion del golpe del rayo con un collider
     private float _distanciaRayo; // distancia del rayo
-    
-    //Checkers
-    private bool _checkPlatf;
+    private bool _checkPlatf; // checkea platform y ground
     private bool _checkGround;
-
-    //capas
-    public LayerMask capaPlatform; // *******************mejor una lista de layer? o meter varias capas aqui*********************** lista
-    public LayerMask capaGround;
-    
-    public Transform origenRayo; // origen desde donde lanzo el rayo
     
     void Start()
     {
@@ -35,7 +31,7 @@ public class CheckControllerPlayerRaycast : MonoBehaviour
         else
             _checkPlatf = false;
         
-        if (Physics.Raycast(_ray, out _hitRayo, _distanciaRayo, capaGround)) // lanza el rayo  *******FALTA AÑADIR COLLIDER AL SUELO SINO NO DETECTA *******
+        if (Physics.Raycast(_ray, out _hitRayo, _distanciaRayo, capaGround)) // lanza el rayo 
         { _checkGround = true; print("SUELO DEBAJO!!");}
         else
             _checkGround = false;
